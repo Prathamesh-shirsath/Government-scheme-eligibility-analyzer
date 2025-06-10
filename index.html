@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="home_title">SchemeFinder - Find Government Schemes</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for language selector */
+        #language-selector {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem; /* Space for the arrow */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+    <nav class="bg-blue-600 p-4 text-white shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold tracking-tight">Scheme<span class="text-yellow-300">Finder</span></a>
+            <div>
+                <a href="index.html" class="mx-2 hover:text-blue-200" data-lang-key="nav_home">Home</a>
+                <a href="eligibility.html" class="mx-2 hover:text-blue-200" data-lang-key="nav_check_eligibility">Check Eligibility</a>
+               
+                <!--<a href="#" class="mx-2 hover:text-blue-200" data-lang-key="nav_feedback">Feedback</a>-->
+                <a href="about.html" class="mx-2 hover:text-blue-200" data-lang-key="nav_about_us">About Us</a>
+                <select id="language-selector-nav" class="bg-blue-700 text-white rounded px-2 py-1 ml-4">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी</option>
+                    <option value="mr">मराठी</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-blue-700 text-white py-20 text-center shadow-lg">
+        <div class="container mx-auto">
+            <h1 class="text-5xl font-extrabold mb-4" data-lang-key="header_title">Find Government Schemes</h1>
+            <p class="text-xl mb-8" data-lang-key="header_subtitle">Simplifying access to government welfare programs.</p>
+            <a href="eligibility.html" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105" data-lang-key="check_eligibility_button">
+                Check Eligibility
+            </a>
+            <a href="about.html" class="ml-4 bg-transparent border-2 border-white hover:bg-white hover:text-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105" data-lang-key="learn_more_button">
+                Learn More
+            </a>
+        </div>
+    </header>
+
+    <section class="py-16 text-center">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6" data-lang-key="mission_title">Our Mission</h2>
+            <p class="text-lg text-gray-600" data-lang-key="mission_description">To connect citizens with relevant government schemes seamlessly.</p>
+        </div>
+    </section>
+
+    <section class="bg-white py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-gray-800 text-center mb-12" data-lang-key="features_title">Key Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="bg-blue-50 p-8 rounded-lg shadow-md text-center transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="text-blue-600 text-5xl mb-4 font-extrabold">01</div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4" data-lang-key="feature1_title">Real-time eligibility detection</h3>
+                    <p class="text-gray-600" data-lang-key="feature1_description">The system instantly processes user inputs such as age, income, location, and other parameters to determine eligibility for various government schemes without delay.</p>
+                </div>
+                <div class="bg-blue-50 p-8 rounded-lg shadow-md text-center transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="text-blue-600 text-5xl mb-4 font-extrabold">02</div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4" data-lang-key="feature2_title">Centralized database of schemes</h3>
+                    <p class="text-gray-600" data-lang-key="feature2_description">All available state and central government schemes are stored in a unified, searchable database, ensuring quick access and simplified management.</p>
+                </div>
+                <div class="bg-blue-50 p-8 rounded-lg shadow-md text-center transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="text-blue-600 text-5xl mb-4 font-extrabold">03</div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4" data-lang-key="feature3_title">Dynamic matching based on user data</h3>
+                    <p class="text-gray-600" data-lang-key="feature3_description">The platform smartly compares user data against eligibility rules and filters to suggest the most relevant government schemes tailored to individual needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto text-center">
+            <p data-lang-key="footer_text">&copy; 2025 SchemeFinder. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="lang.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const langSelectorNav = document.getElementById('language-selector-nav');
+            // Set initial language from local storage or default to 'en'
+            currentLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            langSelectorNav.value = currentLanguage;
+            updateTextContent(); // Update all text on the page
+
+            langSelectorNav.addEventListener('change', (event) => {
+                currentLanguage = event.target.value;
+                localStorage.setItem('selectedLanguage', currentLanguage); // Save preference
+                updateTextContent();
+            });
+        });
+    </script>
+</body>
+</html>

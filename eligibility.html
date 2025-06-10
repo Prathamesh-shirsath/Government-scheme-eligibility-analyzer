@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="eligibility_title">Check Your Scheme Eligibility</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for language selector */
+        #language-selector-nav {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem; /* Space for the arrow */
+        }
+        /* Hidden class for steps */
+        .form-step.hidden {
+            display: none;
+        }
+        /* Styling for active step indicator */
+        .step-indicator-active {
+            background-color: #2563eb; /* blue-600 */
+            color: white;
+        }
+        .step-text-active {
+            color: #2563eb; /* blue-600 */
+            font-weight: 500;
+        }
+        /* Modal Backdrop */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+    <nav class="bg-blue-600 p-4 text-white shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold tracking-tight">Scheme<span class="text-yellow-300">Finder</span></a>
+            <div>
+                <a href="index.html" class="mx-2 hover:text-blue-200" data-lang-key="nav_home">Home</a>
+                <a href="eligibility.html" class="mx-2 hover:text-blue-200" data-lang-key="nav_check_eligibility">Check Eligibility</a>
+                <!--<a href="#" class="mx-2 hover:text-blue-200" data-lang-key="nav_admin_panel"></a>
+                <a href="#" class="mx-2 hover:text-blue-200" data-lang-key="nav_feedback">Feedback</a>-->
+                <a href="about.html" class="mx-2 hover:text-blue-200" data-lang-key="nav_about_us">About Us</a>
+                <select id="language-selector-nav" class="bg-blue-700 text-white rounded px-2 py-1 ml-4">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी</option>
+                    <option value="mr">मराठी</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto mt-10 p-6 bg-white rounded-lg shadow-xl max-w-3xl">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center" data-lang-key="eligibility_form_title">Check Your Scheme Eligibility</h2>
+
+        <div class="flex justify-between items-center mb-8">
+            <div class="flex-1 text-center">
+                <div class="w-10 h-10 mx-auto rounded-full flex items-center justify-center bg-blue-600 text-white font-bold" id="step1-indicator">1</div>
+                <p class="text-sm mt-2 text-blue-600 font-medium" data-lang-key="step1_personal">Personal Details</p>
+            </div>
+            <div class="flex-1 text-center">
+                <div class="w-10 h-10 mx-auto rounded-full flex items-center justify-center bg-gray-300 text-gray-600 font-bold" id="step2-indicator">2</div>
+                <p class="text-sm mt-2 text-gray-600" data-lang-key="step2_location_social">Location & Social</p>
+            </div>
+            <div class="flex-1 text-center">
+                <div class="w-10 h-10 mx-auto rounded-full flex items-center justify-center bg-gray-300 text-gray-600 font-bold" id="step3-indicator">3</div>
+                <p class="text-sm mt-2 text-gray-600" data-lang-key="step3_financial_occupation">Financial & Occupation</p>
+            </div>
+            <div class="flex-1 text-center">
+                <div class="w-10 h-10 mx-auto rounded-full flex items-center justify-center bg-gray-300 text-gray-600 font-bold" id="step4-indicator">4</div>
+                <p class="text-sm mt-2 text-gray-600" data-lang-key="step4_education_health">Education & Health</p>
+            </div>
+        </div>
+
+        <form id="eligibilityForm">
+            <div id="step1" class="form-step">
+                <h3 class="text-2xl font-semibold text-gray-700 mb-6" data-lang-key="step1_personal_title">Step 1: Personal Details</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="age" class="block text-gray-700 text-sm font-bold mb-2" data-lang-key="label_age">Age:</label>
+                        <input type="number" id="age" name="age" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="e.g., 30" required>
+                    </div>
+                    <div>
+                        <label for="gender" class="block text-gray-700 text-sm font-bold mb-2" data-lang-key="label_gender">Gender:</label>
+                        <select id="gender" name="gender" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                            <option value="" data-lang-key="select_gender">Select Gender</option>
+                            <option value="male" data-lang-key="gender_male">Male</option>
+                            <option value="female" data-lang-key="gender_female">Female</option>
+                            <option value="other" data-lang-key="gender_other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label for="marital_status" class="block text-gray-700 text-sm font-bold mb-2" data-lang-key="label_marital_status">Marital Status:</label>
+                    <select id="marital_status" name="marital_status" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                        <option value="" data-lang-key="select_marital_status">Select Marital Status</option>
+                        <option value="single" data-lang-key="marital_single">Single</option>
+                        <option value="married" data-lang-key="marital_married">Married</option>
+                        <option value="divorced" data-lang-key="marital_divorced">Divorced</option>
+                        <option value="widowed" data-lang-key="marital_widowed">Widowed</option>
+                    </select>
+                </div>
+                <div class="flex justify-end">
+                    <button type="button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300" onclick="nextStep()" data-lang-key="button_next">Next</button>
+                </div>
+            </div>
+
+            <div id="step2" class="form-step hidden">
+                <h3 class="text-2xl font-semibold text-gray-700 mb-6" data-lang-key="step2_location_social_title">Step 2: Location & Social</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="state" class="block text-gray-700 text-sm font-bold mb-2" data-lang-key="label_state">State:</label>
+                        <select id="state" name="state" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                            <option value="" data-lang-key="select_state">Select State</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="district" class="block text-gray-700 text-sm font-bold mb-2" data-lang-key="label_district">District:</label>
+                        <select id="district" name="district" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required disabled>
+                            <option value="" data-lang-key="select_district">Select District</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="residency_location" class="block text-gray-700 text-sm font-bold mb-2" data-lang-key="label_residency_location">Residency Location:</label>
+                        <select id="residency_location" name="residency_location" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                            <option value="" data-lang-key="select_location_type">Select Location Type</option>
+                            <option value="rural" data-lang-key="location_rural">Rural</option>
+                            <option value="urban" data-lang-key="location_urban">Urban</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="religion" class="block text-gray-700 text-sm font-bold mb-2" data-lang-key="label_religion">Religion:</label>
+                        <select id="religion" name="religion" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                            <option value="" data-lang-key="select_religion">Select Religion</option>
+                            <option value="hinduism" data-lang-key="religion_hinduism">Hinduism</option>
+                            <option value="islam" data-lang-key="religion_islam">Islam</option>
+                            <option value="christianity" data-lang-key="religion_christianity">Christianity</option>
+                            <option value="sikhism" data-lang-key="religion_sikhism">Sikhism</option>
+                            <option value="buddhism" data-lang-key="religion_buddhism">Buddhism</option>
+                            <option value="jainism" data-lang-key="religion_jainism">Jainism</option>
+                            <option value="other" data-lang-key="religion_other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label for="caste" class="block text-gray-700 text-sm font-bold mb-2" data-lang-key="label_caste">Caste:</label>
+                    <select id="caste" name="caste" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required disabled>
+                        <option value="" data-lang-key="select_caste">Select Caste</option>
+                    </select>
+                </div>
+                <div class="flex justify-between">
+                    <button type="button" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300" onclick="prevStep()" data-lang-key="button_previous">Previous</button>
+                    <button type="button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300" onclick="nextStep()" data-lang-key="button_next">Next</button>
+                </div>
+            </div>
+
+            <div id="step3" class="form-step hidden">
+                <h3 class="text-2xl font-semibold text-gray-700 mb-6" data-lang-key="step3_financial_occupation_title">Step 3: Financial & Occupation</h3>
+                <div class="mb-6">
+                    <label for="income" class="block text-gray-700 text-sm font-bold mb-2" data-lang-key="label_annual_income">Annual Income (INR):</label>
+                    <input type="number" id="income" name="income" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="e.g., 300000" required>
+                </div>
+                <div class="mb-6">
+                    <label for="bpl" class="block text-gray-700 text-sm font-bold mb-2" data-lang-key="label_bpl">Below Poverty Line (BPL):</label>
+                    <select id="bpl" name="bpl" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                        <option value="" data-lang-key="select_option">Select Option</option>
+                        <option value="yes" data-lang-key="option_yes">Yes</option>
+                        <option value="no" data-lang-key="option_no">No</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label for="occupation" class="block text-gray-700 text-sm font-bold mb-2" data-lang-key="label_occupation">Occupation:</label>
+                    <input type="text" id="occupation" name="occupation" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="e.g., Farmer, Engineer, Student" required>
+                </div>
+                <div class="flex justify-between">
+                    <button type="button" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300" onclick="prevStep()" data-lang-key="button_previous">Previous</button>
+                    <button type="button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300" onclick="nextStep()" data-lang-key="button_next">Next</button>
+                </div>
+            </div>
+
+            <div id="step4" class="form-step hidden">
+                <h3 class="text-2xl font-semibold text-gray-700 mb-6" data-lang-key="step4_education_health_title">Step 4: Education & Health</h3>
+                <div class="mb-6">
+                    <label for="education_level" class="block text-gray-700 text-sm font-bold mb-2" data-lang-key="label_education_level">Level of Education:</label>
+                    <select id="education_level" name="education_level" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                        <option value="" data-lang-key="select_level">Select Level</option>
+                        <option value="primary" data-lang-key="edu_primary">Primary</option>
+                        <option value="secondary" data-lang-key="edu_secondary">Secondary</option>
+                        <option value="higher_secondary" data-lang-key="edu_higher_secondary">Higher Secondary</option>
+                        <option value="graduate" data-lang-key="edu_graduate">Graduate</option>
+                        <option value="postgraduate" data-lang-key="edu_postgraduate">Post Graduate</option>
+                        <option value="none" data-lang-key="edu_none">None</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label for="pwd" class="block text-gray-700 text-sm font-bold mb-2" data-lang-key="label_pwd">Person with Disability (PWD):</label>
+                    <select id="pwd" name="pwd" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                        <option value="" data-lang-key="select_option">Select Option</option>
+                        <option value="yes" data-lang-key="option_yes">Yes</option>
+                        <option value="no" data-lang-key="option_no">No</option>
+                    </select>
+                </div>
+                <div class="flex justify-between">
+                    <button type="button" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300" onclick="prevStep()" data-lang-key="button_previous">Previous</button>
+                    <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300" data-lang-key="button_submit">Submit for Eligibility</button>
+                </div>
+            </div>
+        </form>
+
+        <div id="results-section" class="hidden mt-10">
+            <h3 class="text-2xl font-semibold text-gray-700 mb-6 text-center" data-lang-key="eligible_schemes_title">Your Eligible Schemes</h3>
+            <div id="schemes-list" class="space-y-6">
+                </div>
+            <p id="no-schemes-message" class="text-center text-lg text-gray-700 hidden mt-8" data-lang-key="no_schemes_found">No schemes found matching your criteria. Please adjust your input or check back later.</p>
+            <div class="text-center mt-10">
+                <button type="button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300" onclick="resetFormAndStartOver()" data-lang-key="check_again_button">Check Again</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto text-center">
+            <p data-lang-key="footer_text">&copy; 2025 SchemeFinder. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="loading-overlay" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden modal-backdrop">
+        <div class="bg-white p-6 rounded-lg shadow-xl flex flex-col items-center">
+            <div class="animate-spin rounded-full h-12 w-12 border-4 border-t-4 border-blue-500 border-opacity-75"></div>
+            <p class="mt-4 text-gray-700" data-lang-key="loading_message">Processing your request...</p>
+        </div>
+    </div>
+
+    <div id="alert-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden modal-backdrop">
+        <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full text-center">
+            <h3 id="alert-modal-title" class="text-xl font-semibold text-red-600 mb-4"></h3>
+            <p id="alert-modal-message" class="text-gray-700 mb-6"></p>
+            <button id="alert-modal-close" class="px-6 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition duration-300">OK</button>
+        </div>
+    </div>
+
+
+    <script src="lang.js"></script> <script src="script.js"></script>
+</body>
+</html>
