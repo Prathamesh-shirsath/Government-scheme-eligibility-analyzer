@@ -59,6 +59,6 @@ download the repository.
 ## Authors
 
 - [@prathamesh-shirsath](https://github.com/Prathamesh-shirsath)
-- [@hackerbot07](https://github.com/hackerbot07)
-- [@om tapkire]()
-- [@nilesh Tayde]()
+- [@samarth-magar](https://github.com/HackerbottX07)
+- [@om tapkire](https://github.com/OM2049)
+- [@nilesh Tayde](https://github.com/Nilesh-dev24)
